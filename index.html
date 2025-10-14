@@ -77,8 +77,8 @@
 
     <!-- Main Content Container -->
     <div id="main-content" style="opacity: 0; transition: opacity 0.5s ease;">
-        <!-- Header -->
-        <header class="site-header">
+    <!-- Header -->
+    <header class="site-header">
         <div class="avatar">
             <img src="foto.png" alt="Matheus Silva" width="96" height="96">
         </div>
@@ -128,7 +128,7 @@
             <div class="carousel">
                 <div class="slides">
                     <div class="slide is-active">
-                        <img src="portaltiimagem.png" alt="Portal TI" class="blur-up">
+                        <img src="portaltiimagem.png" alt="Portal TI">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>Portal TI</h3>
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="smxliveboard.png" alt="SMX Liveboard" class="blur-up">
+                        <img src="smxliveboard.png" alt="SMX Liveboard">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>SMX Liveboard</h3>
@@ -146,7 +146,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="tralke1.png" alt="Tralke App" class="blur-up">
+                        <img src="tralke1.png" alt="Tralke App">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>Tralke</h3>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="plexo.png" alt="Plexo" class="blur-up">
+                        <img src="plexo.png" alt="Plexo">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>Plexo</h3>
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="zappdesk1.png" alt="ZappDesk PMC" class="blur-up">
+                        <img src="zappdesk1.png" alt="ZappDesk PMC">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>ZappDesk PMC</h3>
@@ -173,7 +173,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="redes.png" alt="Redes e Telecomunicações" class="blur-up">
+                        <img src="redes.png" alt="Redes e Telecomunicações">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>Redes e Telecomunicações</h3>
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="tralke2.png" alt="Tralke Interface" class="blur-up">
+                        <img src="tralke2.png" alt="Tralke Interface">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>Tralke Interface</h3>
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="zappdesk2.png" alt="ZappDesk PMC Interface" class="blur-up">
+                        <img src="zappdesk2.png" alt="ZappDesk PMC Interface">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>ZappDesk PMC Interface</h3>
@@ -200,7 +200,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="redes2.png" alt="Redes e Telecomunicações 2" class="blur-up">
+                        <img src="redes2.png" alt="Redes e Telecomunicações 2">
                         <div class="slide-caption">
                             <div class="slide-text">
                                 <h3>Infraestrutura de Redes</h3>
@@ -685,19 +685,17 @@
         </div>
     </div>
 
-    <!-- Lightbox -->
-    <div id="lightbox" hidden>
-        <div class="lightbox-backdrop">
-            <div class="lightbox-container">
-                <img id="lightbox-img" src="" alt="">
-                <div class="lightbox-controls">
-                    <button class="lightbox-zoom-out" aria-label="Zoom Out">−</button>
-                    <span class="lightbox-zoom-level">100%</span>
-                    <button class="lightbox-zoom-in" aria-label="Zoom In">+</button>
-                    <button class="lightbox-reset" aria-label="Reset Zoom">⌂</button>
+    <!-- Simple Lightbox -->
+    <div id="simple-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; cursor: pointer;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+            <img id="simple-lightbox-img" src="" alt="" style="max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 </div>
-            </div>
-            <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button id="simple-lightbox-close" style="position: absolute; top: 20px; right: 30px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 30px; cursor: pointer; width: 50px; height: 50px; border-radius: 50%;">×</button>
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; background: rgba(0,0,0,0.7); padding: 10px; border-radius: 25px;">
+            <button id="zoom-out" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px;">−</button>
+            <span id="zoom-level" style="color: white; padding: 10px 15px; background: rgba(59,130,246,0.3); border-radius: 15px; min-width: 60px; text-align: center;">100%</span>
+            <button id="zoom-in" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px;">+</button>
+            <button id="zoom-reset" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 16px;">⌂</button>
         </div>
     </div>
 
@@ -709,6 +707,7 @@
 
         // Welcome Screen
         let selectedLanguage = 'pt';
+        
         
         // Language selection
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -765,6 +764,17 @@
                 translatePage('en');
             }
             
+            // Show loading screen immediately (before hiding welcome screen)
+            loadingScreen.hidden = false;
+            loadingScreen.style.opacity = '1';
+            
+            // Reset scroll to top immediately to prevent showing content in middle
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'instant'
+            });
+            
             // Add transition and hide welcome screen
             welcomeScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             welcomeScreen.style.opacity = '0';
@@ -774,10 +784,6 @@
             setTimeout(() => {
                 welcomeScreen.classList.add('hidden');
                 
-                // Show loading screen immediately after welcome screen is hidden
-                loadingScreen.hidden = false;
-                loadingScreen.style.opacity = '1';
-                
                 // Hide loading screen after 3 seconds and show main content
                 setTimeout(() => {
                     loadingScreen.style.opacity = '0';
@@ -785,6 +791,13 @@
                         loadingScreen.hidden = true;
                         // Show main content after loading is completely hidden
                         mainContent.style.opacity = '1';
+                        
+                        // Reset scroll to top when main content appears
+                        window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: 'smooth'
+                        });
                     }, 500);
                 }, 3000);
             }, 500);
@@ -850,27 +863,22 @@
             }, 4000);
         });
 
-        // Lightbox functionality with zoom and drag
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxClose = lightbox.querySelector('.lightbox-close');
-        const lightboxContainer = lightbox.querySelector('.lightbox-container');
-        const zoomInBtn = lightbox.querySelector('.lightbox-zoom-in');
-        const zoomOutBtn = lightbox.querySelector('.lightbox-zoom-out');
-        const resetBtn = lightbox.querySelector('.lightbox-reset');
-        const zoomLevel = lightbox.querySelector('.lightbox-zoom-level');
+        // Simple Lightbox functionality
+        const simpleLightbox = document.getElementById('simple-lightbox');
+        const simpleLightboxImg = document.getElementById('simple-lightbox-img');
+        const simpleLightboxClose = document.getElementById('simple-lightbox-close');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const resetBtn = document.getElementById('zoom-reset');
+        const zoomLevel = document.getElementById('zoom-level');
         
         let currentZoom = 1;
-        let isDragging = false;
-        let dragStart = { x: 0, y: 0 };
-        let imagePosition = { x: 0, y: 0 };
         const minZoom = 0.5;
-        const maxZoom = 5;
+        const maxZoom = 3;
         const zoomStep = 0.25;
 
         function updateZoom() {
-            const transform = `scale(${currentZoom}) translate(${imagePosition.x}px, ${imagePosition.y}px)`;
-            lightboxImg.style.transform = transform;
+            simpleLightboxImg.style.transform = `scale(${currentZoom})`;
             zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
         }
 
@@ -890,93 +898,72 @@
 
         function resetZoom() {
             currentZoom = 1;
-            imagePosition = { x: 0, y: 0 };
             updateZoom();
         }
 
-        function startDrag(e) {
-            if (currentZoom > 1) {
-                isDragging = true;
-                dragStart.x = e.clientX - imagePosition.x;
-                dragStart.y = e.clientY - imagePosition.y;
-                lightboxContainer.style.cursor = 'grabbing';
-            }
-        }
-
-        function drag(e) {
-            if (isDragging && currentZoom > 1) {
-                e.preventDefault();
-                imagePosition.x = e.clientX - dragStart.x;
-                imagePosition.y = e.clientY - dragStart.y;
+        function openLightbox(imgSrc, imgAlt) {
+            simpleLightboxImg.src = imgSrc;
+            simpleLightboxImg.alt = imgAlt;
+            currentZoom = 1;
                 updateZoom();
-            }
+            simpleLightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
-        function endDrag() {
-            isDragging = false;
-            lightboxContainer.style.cursor = currentZoom > 1 ? 'grab' : 'default';
+        function closeLightbox() {
+            simpleLightbox.style.display = 'none';
+            document.body.style.overflow = '';
+            resetZoom();
         }
 
-        // Allow clicking on any PNG image
-        document.querySelectorAll('img[src$=".png"]').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                currentZoom = 1;
-                imagePosition = { x: 0, y: 0 };
-                updateZoom();
-                lightbox.hidden = false;
-                document.body.style.overflow = 'hidden';
+        // Lightbox setup
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force load all carousel images immediately
+            const carouselImages = [
+                'portaltiimagem.png',
+                'smxliveboard.png', 
+                'tralke1.png',
+                'plexo.png',
+                'zappdesk1.png',
+                'redes.png',
+                'tralke2.png',
+                'zappdesk2.png',
+                'redes2.png'
+            ];
+            
+            carouselImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+            
+            // Setup all PNG images
+            document.querySelectorAll('img[src$=".png"]').forEach(img => {
+                img.style.cursor = 'pointer';
+                img.onclick = function() {
+                    openLightbox(this.src, this.alt);
+                };
             });
         });
 
-        // Zoom controls
+        // Lightbox controls
+        simpleLightboxClose.addEventListener('click', closeLightbox);
         zoomInBtn.addEventListener('click', zoomIn);
         zoomOutBtn.addEventListener('click', zoomOut);
         resetBtn.addEventListener('click', resetZoom);
 
-        // Mouse wheel zoom
-        lightboxContainer.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            if (e.deltaY < 0) {
-                zoomIn();
-            } else {
-                zoomOut();
+        // Close on background click
+        simpleLightbox.addEventListener('click', function(e) {
+            if (e.target === simpleLightbox) {
+                closeLightbox();
             }
         });
-
-        // Drag functionality
-        lightboxContainer.addEventListener('mousedown', startDrag);
-        lightboxContainer.addEventListener('mousemove', drag);
-        lightboxContainer.addEventListener('mouseup', endDrag);
-        lightboxContainer.addEventListener('mouseleave', endDrag);
-
-        // Touch support for mobile
-        lightboxContainer.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 1) {
-                const touch = e.touches[0];
-                startDrag(touch);
-            }
-        });
-
-        lightboxContainer.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 1) {
-                e.preventDefault();
-                const touch = e.touches[0];
-                drag(touch);
-            }
-        });
-
-        lightboxContainer.addEventListener('touchend', endDrag);
 
         // Keyboard controls
-        document.addEventListener('keydown', (e) => {
-            if (lightbox.hidden) return;
-            
+        document.addEventListener('keydown', function(e) {
+            if (simpleLightbox.style.display === 'block') {
             switch(e.key) {
                 case 'Escape':
-                    lightbox.hidden = true;
-                    document.body.style.overflow = '';
+                        closeLightbox();
                     break;
                 case '+':
                 case '=':
@@ -988,20 +975,17 @@
                 case '0':
                     resetZoom();
                     break;
+                }
             }
         });
 
-        lightboxClose.addEventListener('click', () => {
-            lightbox.hidden = true;
-            document.body.style.overflow = '';
-            resetZoom();
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.hidden = true;
-                document.body.style.overflow = '';
-                resetZoom();
+        // Mouse wheel zoom
+        simpleLightbox.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomIn();
+            } else {
+                zoomOut();
             }
         });
 
@@ -1283,41 +1267,7 @@
             scrollObserver.observe(card);
         });
 
-        // Lazy loading for images
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        img.classList.add('loaded');
-                        observer.unobserve(img);
-                    }
-                }
-            });
-        }, {
-            rootMargin: '50px 0px',
-            threshold: 0.1
-        });
-
-        // Observe all project images
-        document.querySelectorAll('.project-img').forEach(img => {
-            if (img.src) {
-                img.dataset.src = img.src;
-                img.src = '';
-                imageObserver.observe(img);
-            }
-        });
-
-        // Observe carousel images
-        document.querySelectorAll('.slide img').forEach(img => {
-            if (img.src) {
-                img.dataset.src = img.src;
-                img.src = '';
-                imageObserver.observe(img);
-            }
-        });
+        // Lazy loading completely removed - images load normally
 
         // Touch gestures for mobile navigation
         let touchStartX = 0;

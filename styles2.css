@@ -33,7 +33,24 @@ body{
 }
 
 /* textura geométrica com pattern animado */
-/* body::before removed to fix click issues */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  min-height:100vh;
+  pointer-events:none;
+  background:
+    linear-gradient(45deg, transparent 48%, rgba(59,130,246,0.15) 50%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(14,165,233,0.12) 50%, transparent 52%);
+  background-size: 28px 28px;
+  background-attachment:fixed;
+  opacity:.5;
+  animation: drift 24s linear infinite;
+  z-index:-1;
+}
 
 /* ondas animadas removidas */
 
@@ -333,7 +350,7 @@ body{
 #lightbox{
   position:fixed;
   inset:0;
-  display:none;
+  display:flex;
   align-items:center;
   justify-content:center;
   background:rgba(2,6,12,.85);
@@ -344,11 +361,8 @@ body{
 }
 #lightbox:not([hidden]){
   opacity:1;
-  display:flex !important;
 }
-#lightbox[hidden]{
-  display:none !important;
-}
+#lightbox[hidden]{display:none}
 #lightbox .lightbox-backdrop{
   position:relative;
   width:95vw;
@@ -873,11 +887,46 @@ body{
   height:100%;
   object-fit:cover;
   transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor:pointer;
+  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%233b82f6" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>'), pointer;
+  opacity:0;
+  transition:opacity 0.3s ease-in-out;
+}
+
+.project-img.loaded{
   opacity:1;
 }
 
-/* Loading skeleton removed - images load normally */
+/* Loading skeleton for project images */
+.project-image::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:linear-gradient(90deg, 
+    rgba(255,255,255,0.1) 25%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0.1) 75%);
+  background-size:200% 100%;
+  animation:loading 1.5s infinite;
+  z-index:1;
+  border-radius:var(--radius) var(--radius) 0 0;
+}
+
+.project-img.loaded + .project-image::before,
+.project-image:has(.project-img.loaded)::before{
+  display:none;
+}
+
+@keyframes loading{
+  0%{
+    background-position:200% 0;
+  }
+  100%{
+    background-position:-200% 0;
+  }
+}
 
 .project-img:hover{
   transform:scale(1.05);
@@ -1605,20 +1654,9 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:10001;
+  z-index:9999;
   opacity:0;
   transition:opacity 0.5s ease;
-  pointer-events:none;
-}
-
-#loading-screen[hidden]{
-  display:none !important;
-  pointer-events:none !important;
-  z-index:-1 !important;
-}
-
-#loading-screen:not([hidden]){
-  display:flex !important;
 }
 
 .loading-container{
@@ -2210,359 +2248,6 @@ body{
   .tech-tag{
     font-size:20px;
     padding:14px 20px;
-  }
-}
-
-/* Main content z-index to ensure it's below loading screen */
-#main-content {
-  position: relative;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-/* Carousel images visibility - removed forced overrides */
-
-/* Welcome Screen Responsive */
-/* Mobile Small (max-width: 480px) */
-@media (max-width: 480px) {
-  .welcome-container {
-    max-width: 90vw;
-    padding: 20px 16px;
-  }
-  
-  .welcome-content {
-    padding: 32px 20px;
-    border-radius: 16px;
-  }
-  
-  .welcome-avatar {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 24px;
-  }
-  
-  .welcome-avatar img {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .avatar-glow {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .title-name {
-    font-size: 28px;
-  }
-  
-  .title-role {
-    font-size: 14px;
-  }
-  
-  .welcome-description {
-    font-size: 14px;
-    margin: 0 0 24px;
-  }
-  
-  .language-selection h3 {
-    font-size: 14px;
-    margin: 0 0 12px;
-  }
-  
-  .lang-btn {
-    padding: 12px 16px;
-    font-size: 14px;
-    min-width: 120px;
-  }
-  
-  .lang-btn .flag {
-    width: 16px;
-    height: 12px;
-  }
-  
-  .scroll-hint {
-    padding: 12px;
-    margin-top: 16px;
-  }
-  
-  .scroll-text {
-    font-size: 12px;
-  }
-  
-  .scroll-arrow {
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
-  }
-}
-
-/* Mobile Medium (481px - 600px) */
-@media (min-width: 481px) and (max-width: 600px) {
-  .welcome-container {
-    max-width: 85vw;
-    padding: 24px 20px;
-  }
-  
-  .welcome-content {
-    padding: 36px 24px;
-  }
-  
-  .welcome-avatar {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 28px;
-  }
-  
-  .welcome-avatar img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .avatar-glow {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .title-name {
-    font-size: 32px;
-  }
-  
-  .title-role {
-    font-size: 15px;
-  }
-  
-  .welcome-description {
-    font-size: 15px;
-  }
-  
-  .language-selection h3 {
-    font-size: 15px;
-  }
-  
-  .lang-btn {
-    padding: 13px 20px;
-    font-size: 15px;
-    min-width: 130px;
-  }
-}
-
-/* Tablet Portrait (601px - 768px) */
-@media (min-width: 601px) and (max-width: 768px) {
-  .welcome-container {
-    max-width: 80vw;
-    padding: 32px 24px;
-  }
-  
-  .welcome-content {
-    padding: 40px 28px;
-  }
-  
-  .welcome-avatar {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 30px;
-  }
-  
-  .welcome-avatar img {
-    width: 110px;
-    height: 110px;
-  }
-  
-  .avatar-glow {
-    width: 130px;
-    height: 130px;
-  }
-  
-  .title-name {
-    font-size: 34px;
-  }
-  
-  .welcome-description {
-    font-size: 16px;
-  }
-}
-
-/* Tablet Landscape (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .welcome-container {
-    max-width: 70vw;
-    padding: 36px 28px;
-  }
-  
-  .welcome-content {
-    padding: 44px 32px;
-  }
-  
-  .welcome-avatar {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 32px;
-  }
-  
-  .welcome-avatar img {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .avatar-glow {
-    width: 140px;
-    height: 140px;
-  }
-  
-  .title-name {
-    font-size: 36px;
-  }
-}
-
-/* Mobile Landscape (max-height: 500px) */
-@media (max-height: 500px) and (orientation: landscape) {
-  .welcome-container {
-    padding: 16px 20px;
-    max-width: 90vw;
-  }
-  
-  .welcome-content {
-    padding: 24px 20px;
-  }
-  
-  .welcome-avatar {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 16px;
-  }
-  
-  .welcome-avatar img {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .avatar-glow {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .title-name {
-    font-size: 24px;
-    margin-bottom: 4px;
-  }
-  
-  .title-role {
-    font-size: 14px;
-    margin-bottom: 4px;
-  }
-  
-  .welcome-description {
-    font-size: 14px;
-    margin: 0 0 16px;
-  }
-  
-  .language-selection {
-    margin: 0 0 16px;
-  }
-  
-  .language-selection h3 {
-    font-size: 14px;
-    margin: 0 0 8px;
-  }
-  
-  .lang-btn {
-    padding: 8px 12px;
-    font-size: 13px;
-    min-width: 100px;
-  }
-  
-  .lang-btn .flag {
-    width: 14px;
-    height: 10px;
-  }
-  
-  .scroll-hint {
-    padding: 8px;
-    margin-top: 12px;
-  }
-  
-  .scroll-text {
-    font-size: 12px;
-  }
-  
-  .scroll-arrow {
-    width: 18px;
-    height: 18px;
-    font-size: 14px;
-  }
-}
-
-/* Extra Small Devices (max-width: 320px) */
-@media (max-width: 320px) {
-  .welcome-container {
-    max-width: 95vw;
-    padding: 16px 12px;
-  }
-  
-  .welcome-content {
-    padding: 24px 16px;
-    border-radius: 12px;
-  }
-  
-  .welcome-avatar {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-  }
-  
-  .welcome-avatar img {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .avatar-glow {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .title-name {
-    font-size: 24px;
-  }
-  
-  .title-role {
-    font-size: 13px;
-  }
-  
-  .welcome-description {
-    font-size: 13px;
-    margin: 0 0 20px;
-  }
-  
-  .language-selection h3 {
-    font-size: 13px;
-    margin: 0 0 10px;
-  }
-  
-  .lang-btn {
-    padding: 10px 12px;
-    font-size: 13px;
-    min-width: 100px;
-  }
-  
-  .lang-btn .flag {
-    width: 14px;
-    height: 10px;
-  }
-  
-  .scroll-hint {
-    padding: 10px;
-    margin-top: 16px;
-  }
-  
-  .scroll-text {
-    font-size: 11px;
-  }
-  
-  .scroll-arrow {
-    width: 18px;
-    height: 18px;
-    font-size: 14px;
   }
 }
 
