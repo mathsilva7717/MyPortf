@@ -910,6 +910,21 @@
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('is-active', i === index);
                 });
+                
+                // Re-setup lightbox for all carousel images
+                setTimeout(() => {
+                    document.querySelectorAll('.slide img').forEach(img => {
+                        img.style.cursor = 'pointer';
+                        img.style.pointerEvents = 'auto';
+                        img.style.zIndex = '10';
+                        img.onclick = function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('Opening carousel lightbox for:', this.src);
+                            openLightbox(this.src, this.alt);
+                        };
+                    });
+                }, 100);
             }
 
             dots.forEach((dot, index) => {
@@ -965,10 +980,11 @@
         }
 
         function openLightbox(imgSrc, imgAlt) {
+            console.log('openLightbox called with:', imgSrc, imgAlt); // Debug log
             simpleLightboxImg.src = imgSrc;
             simpleLightboxImg.alt = imgAlt;
             currentZoom = 1;
-                updateZoom();
+            updateZoom();
             simpleLightbox.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -981,31 +997,33 @@
 
         // Lightbox setup
         document.addEventListener('DOMContentLoaded', function() {
-            // Force load all carousel images immediately
-            const carouselImages = [
-                'portaltiimagem.png',
-                'smxliveboard.png', 
-                'tralke1.png',
-                'plexo.png',
-                'zappdesk1.png',
-                'redes.png',
-                'tralke2.png',
-                'zappdesk2.png',
-                'redes2.png'
-            ];
+            // Setup lightbox for all images
+            function setupLightbox() {
+                const images = document.querySelectorAll('img[src$=".png"]');
+                console.log('Found', images.length, 'PNG images');
+                
+                images.forEach((img, index) => {
+                    console.log(`Image ${index}:`, img.src, img.alt);
+                    img.style.cursor = 'pointer';
+                    img.style.pointerEvents = 'auto';
+                    img.style.zIndex = '10';
+                    img.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Opening lightbox for:', this.src);
+                        openLightbox(this.src, this.alt);
+                    };
+                });
+            }
             
-            carouselImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
+            // Setup immediately
+            setupLightbox();
             
-            // Setup all PNG images
-            document.querySelectorAll('img[src$=".png"]').forEach(img => {
-                img.style.cursor = 'pointer';
-                img.onclick = function() {
-                    openLightbox(this.src, this.alt);
-                };
-            });
+            // Re-setup after a delay to ensure all images are loaded
+            setTimeout(setupLightbox, 500);
+            
+            // Re-setup after carousel changes
+            setTimeout(setupLightbox, 1000);
         });
 
         // Lightbox controls
@@ -1400,6 +1418,21 @@
             dots.forEach((dot, index) => {
                 dot.classList.toggle('is-active', index === currentSlide);
             });
+            
+            // Re-setup lightbox for all carousel images
+            setTimeout(() => {
+                document.querySelectorAll('.slide img').forEach(img => {
+                    img.style.cursor = 'pointer';
+                    img.style.pointerEvents = 'auto';
+                    img.style.zIndex = '10';
+                    img.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Opening carousel lightbox for:', this.src);
+                        openLightbox(this.src, this.alt);
+                    };
+                });
+            }, 100);
         }
 
         // Touch event listeners
@@ -1432,6 +1465,7 @@
             currentSlide = (currentSlide + 1) % slides.length;
             updateCarousel();
         }, 5000);
+
 
 
         // Contact Form Functionality

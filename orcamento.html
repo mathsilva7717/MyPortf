@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - Klarke Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 3px solid #333;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+        }
+
+        .company-info {
+            text-align: center;
+        }
+
+        .company-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-section {
+            margin-top: 40px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #555;
+            text-align: center;
+        }
+
+        .contact-section p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .contact-section strong {
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .proposal-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-left: 4px solid #555;
+        }
+
+        .proposal-info p {
+            margin: 8px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .proposal-info strong {
+            color: #333;
+        }
+
+        .items-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        thead {
+            background-color: #333;
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child {
+            width: 80px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        td {
+            padding: 15px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        td:first-child {
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .total-value {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: right;
+            border-radius: 4px;
+        }
+
+        .total-value p {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .total-value .value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .payment-section {
+            margin-top: 40px;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-left: 4px solid #555;
+        }
+
+        .payment-section h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .payment-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .payment-section li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .payment-section li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .company-details {
+            margin-top: 40px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #555;
+        }
+
+        .company-details h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .company-details p {
+            color: #555;
+            font-size: 14px;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .company-details ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .company-details li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .company-details li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 30px;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .total-value,
+            thead,
+            .proposal-info,
+            .payment-section,
+            .company-details,
+            .contact-section {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="klarke.png" alt="Klarke Solutions" class="logo">
+            <div class="company-info">
+                <div class="company-name">Klarke Solutions</div>
+            </div>
+        </div>
+
+        <h1>Proposta Comercial</h1>
+
+        <div class="proposal-info">
+            <p><strong>Data:</strong> <span id="current-date"></span></p>
+            <p><strong>Validade:</strong> 30 dias</p>
+        </div>
+
+        <div class="items-section">
+            <h2 class="section-title">Sistema de Segurança e Monitoramento</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>QTD</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Gravador Digital INVD 3016 POE</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>HD WD Purple 1TB</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Câmeras Dome VIPC 1230 D G2</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Câmeras Bullet VIPC 1230 B G2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Cabos LAN 305m Cat5e Impact</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mini Rack 5U</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Caixas de Passagem</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Switch 8 Portas Gigabit</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td>Conectores RJ45</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Keystones</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Barras de Eletroduto Preto 3m</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Joelhos de Eletroduto</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Caixas de Sobrepor de Keystone</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="total-value">
+                <p>VALOR TOTAL</p>
+                <p class="value">R$ 18.000,00</p>
+            </div>
+        </div>
+
+        <div class="payment-section">
+            <h2>Condições de Pagamento</h2>
+            <ul>
+                <li>50% de entrada na aprovação do orçamento</li>
+                <li>50% na conclusão da instalação</li>
+                <li>Pagamento via PIX, transferência bancária ou boleto</li>
+                <li>Parcelamento disponível mediante consulta</li>
+            </ul>
+        </div>
+
+        <div class="company-details">
+            <h2>Informações da Empresa</h2>
+            <p><strong>Razão Social:</strong> Klarke Solutions</p>
+            <p><strong>CNPJ:</strong> 57.070.119/0001-58</p>
+            <p><strong>Serviços Inclusos:</strong></p>
+            <ul>
+                <li>Instalação e configuração completa do sistema</li>
+                <li>Treinamento básico de operação</li>
+                <li>Assistência técnica permanente</li>
+                <li>Suporte remoto e presencial quando necessário</li>
+            </ul>
+        </div>
+
+        <div class="contact-section">
+            <p><strong>Matheus Silva</strong> - Diretor Técnico</p>
+            <p>Tel: (13) 99709-6178</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>Klarke Solutions</strong></p>
+            <p>Entre em contato para mais informações</p>
+            <p><a href="https://www.linkedin.com/company/klarke/" target="_blank">linkedin.com/company/klarke</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Define a data atual
+        const today = new Date();
+        const dateString = today.toLocaleDateString('pt-BR', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        document.getElementById('current-date').textContent = dateString;
+    </script>
+</body>
+</html>
